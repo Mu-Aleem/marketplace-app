@@ -17,6 +17,9 @@ const createProduct = asyncHandler(async (req, res) => {
     boxAvaliable,
     seller,
   } = req.body;
+  console.log("🚀 ~ createProduct ~ req.body:", req.user);
+
+  const UserID = req.user?._id;
 
   const newProduct = new Product({
     name,
@@ -29,7 +32,7 @@ const createProduct = asyncHandler(async (req, res) => {
     warrantyAvaliable,
     accoessoriesAvaliable,
     boxAvaliable,
-    seller,
+    seller: UserID,
   });
 
   const data = await newProduct.save();
