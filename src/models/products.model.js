@@ -25,8 +25,6 @@ const productSchema = new mongoose.Schema(
     },
     images: {
       url: Array,
-      default: [],
-      // required: true,
     },
     billAvaliable: {
       type: Boolean,
