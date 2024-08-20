@@ -5,8 +5,6 @@ import {
   registerUser,
   changeCurrentPassword,
   getCurrentUser,
-  //   getUserChannelProfile,
-  //   updateAccountDetails,
 } from "../../controllers/users/user.controller.js";
 // import { upload } from "../middlewares/multer.middleware.js";
 import { verifyJWT } from "../../middlewares/auth.middleware.js";
