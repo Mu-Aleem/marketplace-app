@@ -137,6 +137,40 @@ const editProduct = asyncHandler(async (req, res) => {
     .status(200)
     .json(new ApiResponse(200, updatedProduct, "Product updated successfully"));
 });
+const updateProductStatus = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  const { status } = req.body;
+  const user = req.user;
+
+  // Check if the user is an admin
+  if (!user || user.role !== "admin") {
+    throw new ApiError(
+      403,
+      "You do not have permission to update product status"
+    );
+  }
+
+  // Find and update the product status
+  const updatedProduct = await Product.findByIdAndUpdate(
+    id,
+    { status },
+    { new: true, runValidators: true }
+  );
+
+  if (!updatedProduct) {
+    throw new ApiError(404, "Product not found");
+  }
+
+  return res
+    .status(200)
+    .json(
+      new ApiResponse(
+        200,
+        updatedProduct,
+        "Product status updated successfully"
+      )
+    );
+});
 
 export {
   createProduct,
@@ -144,4 +178,5 @@ export {
   getAllProducts,
   deleteProduct,
   editProduct,
+  updateProductStatus,
 };
