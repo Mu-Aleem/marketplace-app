@@ -24,7 +24,7 @@ const productSchema = new mongoose.Schema(
       required: true,
     },
     images: {
-      url: Array,
+      type: [String],
     },
     billAvaliable: {
       type: Boolean,
@@ -52,6 +52,7 @@ const productSchema = new mongoose.Schema(
     },
     status: {
       type: String,
+      enum: ["pending", "approved", "rejected"],
       default: "pending",
       required: true,
     },

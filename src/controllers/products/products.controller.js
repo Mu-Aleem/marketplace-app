@@ -137,6 +137,9 @@ const editProduct = asyncHandler(async (req, res) => {
     .status(200)
     .json(new ApiResponse(200, updatedProduct, "Product updated successfully"));
 });
+
+// admin controllers
+
 const updateProductStatus = asyncHandler(async (req, res) => {
   const { id } = req.params;
   const { status } = req.body;

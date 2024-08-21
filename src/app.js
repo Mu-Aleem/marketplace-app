@@ -32,6 +32,7 @@ app.use("/api/v1/healthcheck", healthcheckRouter);
 app.use("/api/v1/users", userRouter);
 // products
 app.use("/api/v1/product", prodctRouter);
+app.use("/api/v1/admin", prodctRouter);
 
 // errror handler
 app.use(errorHandler);
